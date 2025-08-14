@@ -1,0 +1,50 @@
+
+version: 2
+
+sources:
+  - name: erp
+    database: fea25_05
+    schema: raw_adventure_works
+    tables:
+      - name: production_product
+        description: Contém informações dos produtos como nome e subcategoria.
+        columns:
+          - name: productid
+            description: Identificador único do produto.
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome do produto.
+            data_tests:
+              - not_null
+          - name: productsubcategoryid
+            description: Chave estrangeira para a subcategoria do produto.
+
+      - name: production_productsubcategory
+        description: Contém informações das subcategorias dos produtos.
+        columns:
+          - name: productsubcategoryid
+            description: Identificador único da subcategoria.
+            data_tests:
+              - unique
+              - not_null
+          - name: productcategoryid
+            description: Chave estrangeira para a categoria.
+          - name: name
+            description: Nome da subcategoria.
+            data_tests:
+              - not_null
+
+      - name: production_productcategory
+        description: Contém informações das categorias dos produtos.
+        columns:
+          - name: productcategoryid
+            description: Identificador único da categoria.
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome da categoria.
+            data_tests:
+              - not_null
