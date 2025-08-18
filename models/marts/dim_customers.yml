@@ -1,0 +1,42 @@
+
+models:
+  - name: dim_customers
+    description: Dimensão de clientes contendo informações consolidadas de pessoas físicas e lojas, junto com seus endereços e países.
+    columns:
+      - name: customer_sk
+        description: Chave substituta única da dimensão de clientes.
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_pk
+        description: Chave natural do cliente vinda do sistema transacional.
+
+      - name: customer_type
+        description: Define se o cliente é uma pessoa física ou uma loja.
+        tests:
+          - not_null
+
+      - name: first_name
+        description: Primeiro nome do cliente (apenas para pessoas físicas).
+
+      - name: last_name
+        description: Sobrenome do cliente (apenas para pessoas físicas).
+
+      - name: store_name
+        description: Nome da loja (apenas para clientes que são lojas).
+
+      - name: address
+        description: Endereço completo do cliente.
+      
+      - name: city
+        description: Cidade associada ao cliente.
+
+      - name: state_province
+        description: Estado ou província do cliente.
+
+      - name: country
+        description: País do cliente.
+
+      - name: territory_id
+        description: Identificador da região de vendas associada ao cliente.
