@@ -48,3 +48,90 @@ sources:
             description: Nome da categoria.
             data_tests:
               - not_null
+      - name: sales_customer
+        description: Contém informações sobre clientes, podendo ser pessoa física ou loja.
+        columns:
+          - name: customerid
+            description: Identificador único do cliente.
+            data_tests:
+              - unique
+              - not_null
+          - name: personid
+            description: Referência para pessoa física (se aplicável).
+          - name: storeid
+            description: Referência para loja (se aplicável).
+          - name: territoryid
+            description: Região associada ao cliente.
+
+      - name: sales_store
+        description: Contém informações sobre lojas cadastradas como clientes.
+        columns:
+          - name: businessentityid
+            description: Identificador único da loja.
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome da loja.
+            data_tests:
+              - not_null
+
+      - name: person_person
+        description: Contém informações pessoais de clientes pessoa física.
+        columns:
+          - name: businessentityid
+            description: Identificador único da pessoa.
+            data_tests:
+              - unique
+              - not_null
+          - name: firstname
+            description: Primeiro nome da pessoa.
+            data_tests:
+              - not_null
+          - name: lastname
+            description: Sobrenome da pessoa.
+            data_tests:
+              - not_null
+
+      - name: person_address
+        description: Contém endereços cadastrados de clientes e entidades.
+        columns:
+          - name: addressid
+            description: Identificador único do endereço.
+            data_tests:
+              - unique
+              - not_null
+          - name: addressline1
+            description: Primeira linha do endereço.
+          - name: city
+            description: Cidade associada ao endereço.
+          - name: stateprovinceid
+            description: Referência para a província/estado do endereço.
+
+      - name: person_stateprovince
+        description: Contém informações sobre estados/províncias.
+        columns:
+          - name: stateprovinceid
+            description: Identificador único do estado/província.
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome do estado/província.
+            data_tests:
+              - not_null
+          - name: countryregioncode
+            description: Código do país associado.
+
+      - name: person_countryregion
+        description: Contém informações sobre países.
+        columns:
+          - name: countryregioncode
+            description: Identificador único do país (código).
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome do país.
+            data_tests:
+              - not_null
